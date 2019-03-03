@@ -24,7 +24,9 @@ defmodule Cockatrice.MixProject do
       {:earmark, "~> 1.3.1"},
       {:dummy, "~> 1.0.0"},
       {:expug, "~> 0.9"},
-      {:phoenix_live_reload, "~> 1.2"}
+      {:phoenix_live_reload, "~> 1.2"},
+      {:plug, "~> 1.7"},
+      {:plug_cowboy, "~> 2.0"}
     ]
   end
 end
