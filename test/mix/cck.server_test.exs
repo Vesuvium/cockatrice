@@ -3,9 +3,9 @@ defmodule MixTest.Cck.Server do
   import Dummy
 
   test "the cck.server task" do
-    dummy IO, ["puts"] do
-      Mix.Tasks.Cck.Server.run("args")
-      assert called(IO.puts("Server started"))
+    dummy Mix.Tasks.Run, ["run"] do
+      Mix.Tasks.Cck.Server.run([])
+      assert called(Mix.Tasks.Run.run(["--no-halt"]))
     end
   end
 end
