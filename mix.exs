@@ -13,6 +13,7 @@ defmodule Cockatrice.MixProject do
 
   def application do
     [
+      mod: {Cockatrice.Server, []},
       extra_applications: [:logger]
     ]
   end
