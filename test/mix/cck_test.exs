@@ -5,7 +5,7 @@ defmodule MixTest.Tasks.Cck do
   test "welcomes to cockatrice" do
     dummy IO, ["puts"] do
       Mix.Tasks.Cck.run("args")
-      called(IO.puts("Welcome to cockatrice"))
+      assert called(IO.puts("Welcome to cockatrice"))
     end
   end
 end
