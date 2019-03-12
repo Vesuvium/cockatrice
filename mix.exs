@@ -27,7 +27,8 @@ defmodule Cockatrice.MixProject do
       {:expug, "~> 0.9"},
       {:phoenix_live_reload, "~> 1.2"},
       {:plug, "~> 1.7"},
-      {:plug_cowboy, "~> 2.0"}
+      {:plug_cowboy, "~> 2.0"},
+      {:yaml_elixir, "~> 2.1.0"}
     ]
   end
 end
