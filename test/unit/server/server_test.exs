@@ -7,7 +7,7 @@ defmodule CockatriceTest.Server do
   test "the children function" do
     dummy Plug.Cowboy, ["child_spec"] do
       result = [
-        [scheme: :http, plug: Cockatrice.Server.Router, options: [port: 4001]]
+        [scheme: :http, plug: Cockatrice.Server.Router, options: [port: 4000]]
       ]
 
       assert Server.children() == result

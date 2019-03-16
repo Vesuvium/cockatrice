@@ -4,7 +4,8 @@ defmodule Cockatrice.Server do
   require Logger
 
   def children() do
-    [Cowboy.child_spec(scheme: :http, plug: Router, options: [port: 4001])]
+    port = Confex.get_env(:cockatrice, :port)
+    [Cowboy.child_spec(scheme: :http, plug: Router, options: [port: port])]
   end
 
   def start(_type, _args) do
