@@ -7,15 +7,16 @@ defmodule CockatriceTest.Server.Router do
   @opts Router.init([])
 
   setup_all do
-    File.mkdir_p("dist/folder")
-    File.mkdir_p("dist/css")
-    File.write("dist/index.html", "index")
-    File.write("dist/page.html", "page")
-    File.write("dist/folder/page.html", "nested")
-    File.write("dist/favicon.ico", "favicon")
-    File.write("dist/css/main.css", "css")
+    dist = Application.get_env(:cockatrice, :dist)
+    File.mkdir_p("#{dist}/folder")
+    File.mkdir_p("#{dist}/css")
+    File.write("#{dist}/index.html", "index")
+    File.write("#{dist}/page.html", "page")
+    File.write("#{dist}/folder/page.html", "nested")
+    File.write("#{dist}/favicon.ico", "favicon")
+    File.write("#{dist}/css/main.css", "css")
 
-    on_exit(fn -> File.rm_rf("dist") end)
+    on_exit(fn -> File.rm_rf(dist) end)
   end
 
   test "a root request" do

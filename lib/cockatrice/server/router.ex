@@ -5,18 +5,20 @@ defmodule Cockatrice.Server.Router do
   plug(:dispatch)
 
   get "/" do
-    send_file(conn, 200, "dist/index.html")
+    dist_folder = Confex.get_env(:cockatrice, :dist)
+    send_file(conn, 200, "#{dist_folder}/index.html")
   end
 
   get "/*glob" do
+    dist_folder = Confex.get_env(:cockatrice, :dist)
     filename = List.last(glob)
     fullpath = Enum.join(glob, "/")
 
     file =
       if String.contains?(filename, ".") do
-        "dist/#{fullpath}"
+        "#{dist_folder}/#{fullpath}"
       else
-        "dist/#{fullpath}.html"
+        "#{dist_folder}/#{fullpath}.html"
       end
 
     if File.exists?(file) do
