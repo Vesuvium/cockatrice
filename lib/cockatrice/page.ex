@@ -11,9 +11,10 @@ defmodule Cockatrice.Page do
     config = Application.get_env(:cockatrice, __MODULE__, [])
     engine = config[:templating_engine] || @templating_engine
 
-    file
-    |> Markdown.read()
-    |> engine.compile("#{templates_folder}/layout.pug")
+    content = Markdown.read(file)
+
+    content
+    |> engine.compile("#{templates_folder}/#{content[:layout]}")
   end
 
   def write(page, dist_folder) do
