@@ -4,6 +4,20 @@ defmodule CockatriceTest.Markdown do
   alias Cockatrice.Yaml
   alias Cockatrice.Markdown
 
+  test "extracting frontmatter and markdown from a string" do
+    dummy String, [{"split", fn _a, _b, _c -> ["front", "markdown"] end}] do
+      assert Markdown.extract("string") == ["front", "markdown"]
+      assert called(String.split("string", ~r/\n-{3,}\n/, parts: 2))
+    end
+  end
+
+  test "transforming frontmatter to a map" do
+    dummy Yaml, [{"read", fn _a -> %{"key" => "value"} end}] do
+      assert Markdown.frontmatter("string") == %{"key" => "value"}
+      assert called(Yaml.read("string"))
+    end
+  end
+
   test "read a markdown file with frontmatter" do
     dummy File, ["read!"] do
       dummy String, [{"split", fn _a, _b, _c -> ["front", "markdown"] end}] do

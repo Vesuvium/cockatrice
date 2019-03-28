@@ -1,16 +1,21 @@
 defmodule Cockatrice.Markdown do
   alias Cockatrice.Yaml
 
-  defp parse(data) do
-    [frontmatter, markdown] = String.split(data, ~r/\n-{3,}\n/, parts: 2)
-    page = %{"content" => Earmark.as_html!(markdown)}
+  defp merge([front, markdown]) do
+    frontmatter(front) |> Map.put("content", Earmark.as_html!(markdown))
+  end
 
-    Enum.reduce(Yaml.read(frontmatter), page, fn {key, value}, acc ->
+  def extract(string) do
+    String.split(string, ~r/\n-{3,}\n/, parts: 2)
+  end
+
+  def frontmatter(string) do
+    Enum.reduce(Yaml.read(string), %{}, fn {key, value}, acc ->
       Map.put(acc, key, value)
     end)
   end
 
   def read(path) do
-    path |> File.read!() |> parse()
+    path |> File.read!() |> extract() |> merge()
   end
 end
