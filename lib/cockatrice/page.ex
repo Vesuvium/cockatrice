@@ -1,6 +1,6 @@
 defmodule Cockatrice.Page do
   @templating_engine Cockatrice.Adapters.Pug
-  alias Cockatrice.Markdown
+  alias Cockatrice.Content
 
   @moduledoc """
   Creates and writes pages
@@ -11,7 +11,7 @@ defmodule Cockatrice.Page do
     config = Application.get_env(:cockatrice, __MODULE__, [])
     engine = config[:templating_engine] || @templating_engine
 
-    content = Markdown.read(file)
+    content = Content.read(file)
 
     content
     |> engine.compile("#{templates_folder}/#{content[:layout]}")

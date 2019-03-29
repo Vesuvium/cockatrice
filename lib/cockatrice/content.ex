@@ -1,4 +1,4 @@
-defmodule Cockatrice.Markdown do
+defmodule Cockatrice.Content do
   alias Cockatrice.Yaml
 
   defp merge([front, markdown]) do

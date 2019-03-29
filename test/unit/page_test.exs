@@ -2,18 +2,18 @@ defmodule CockatriceTest.Page do
   use ExUnit.Case
   import Dummy
   alias Cockatrice.Page
-  alias Cockatrice.Markdown
+  alias Cockatrice.Content
   alias Cockatrice.Adapters.Pug
 
   test "the new function" do
     content = %{layout: "page.pug"}
 
     dummy Confex, [{"get_env", fn _a, _b -> "templates" end}] do
-      dummy Markdown, [{"read", fn _a -> content end}] do
+      dummy Content, [{"read", fn _a -> content end}] do
         dummy Pug, [{"compile", fn _a, _b -> nil end}] do
           Page.new("file")
           assert called(Confex.get_env(:cockatrice, :templates))
-          assert called(Markdown.read("file"))
+          assert called(Content.read("file"))
           assert called(Pug.compile(content, "templates/page.pug"))
         end
       end
