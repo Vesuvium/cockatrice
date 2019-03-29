@@ -1,8 +1,8 @@
 defmodule CockatriceTest.Content do
   use ExUnit.Case
   import Dummy
-  alias Cockatrice.Yaml
   alias Cockatrice.Content
+  alias Cockatrice.Frontmatter
 
   test "extracting frontmatter and markdown from a string" do
     dummy String, [{"split", fn _a, _b, _c -> ["front", "markdown"] end}] do
@@ -11,32 +11,26 @@ defmodule CockatriceTest.Content do
     end
   end
 
-  test "transforming frontmatter to a map" do
-    dummy Yaml, [{"read", fn _a -> %{"key" => "value"} end}] do
-      assert Content.frontmatter("string") == %{"key" => "value"}
-      assert called(Yaml.read("string"))
-    end
-  end
-
-  test "the defaults values" do
-    assert Content.defaults(%{}) == %{:layout => "page.pug"}
-  end
-
-  test "allowing defaults to be overwritten" do
-    frontmatter = %{:layout => "index.pug"}
-    assert Content.defaults(frontmatter) == frontmatter
-  end
-
   test "read a markdown file with frontmatter" do
     dummy File, ["read!"] do
       dummy String, [{"split", fn _a, _b, _c -> ["front", "markdown"] end}] do
         dummy Earmark, ["as_html!"] do
-          dummy Yaml, [{"read", fn _a -> %{"key" => "value"} end}] do
+          dummy Frontmatter, [
+            {"parse", fn _a -> %{"key" => "value"} end},
+            {"defaults", fn _a, _b -> "defaults" end}
+          ] do
             result = Content.read("path")
             assert called(String.split("path", ~r/\n-{3,}\n/, parts: 2))
             assert called(Earmark.as_html!("markdown"))
-            assert called(Yaml.read("front"))
-            assert result == %{"content" => "markdown", "key" => "value"}
+            assert called(Frontmatter.parse("front"))
+
+            assert called(
+                     Frontmatter.defaults(%{"content" => "markdown", "key" => "value"},
+                       layout: "page.pug"
+                     )
+                   )
+
+            assert result == "defaults"
           end
         end
       end
