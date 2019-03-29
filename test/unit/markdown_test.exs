@@ -18,6 +18,15 @@ defmodule CockatriceTest.Markdown do
     end
   end
 
+  test "the defaults values" do
+    assert Markdown.defaults(%{}) == %{:layout => "page.pug"}
+  end
+
+  test "allowing defaults to be overwritten" do
+    frontmatter = %{:layout => "index.pug"}
+    assert Markdown.defaults(frontmatter) == frontmatter
+  end
+
   test "read a markdown file with frontmatter" do
     dummy File, ["read!"] do
       dummy String, [{"split", fn _a, _b, _c -> ["front", "markdown"] end}] do
