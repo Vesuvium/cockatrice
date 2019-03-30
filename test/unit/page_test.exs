@@ -30,8 +30,11 @@ defmodule CockatriceTest.Page do
 
   test "the write function" do
     dummy File, ["write/2"] do
-      Page.write("page", "dist")
-      assert called(File.write("dist/index.html", "page"))
+      dummy Page, [{"target", fn _a, _b -> "target" end}] do
+        Page.write("content", "dist", "page.md")
+        assert called(Cockatrice.Page.target("page.md", "dist"))
+        assert called(File.write("target", "content"))
+      end
     end
   end
 end

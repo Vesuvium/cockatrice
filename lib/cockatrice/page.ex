@@ -29,4 +29,10 @@ defmodule Cockatrice.Page do
 
     "#{dist_path}/#{partial}"
   end
+
+  def write(content, dist_path, file_path) do
+    file_path
+    |> Cockatrice.Page.target(dist_path)
+    |> File.write(content)
+  end
 end
