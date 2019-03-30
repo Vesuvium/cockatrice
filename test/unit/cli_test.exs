@@ -24,6 +24,16 @@ defmodule CockatriceTest.Cli do
     end
   end
 
+  test "the help function" do
+    dummy IO, ["puts"] do
+      assert Cli.help() ==
+               ~S(
+cockatrice compile     generates html files
+cockatrice version     print the version
+cockatrice help        print this text)
+    end
+  end
+
   test "the compile command" do
     dummy Compiler, [{"compile", fn -> "done" end}] do
       assert Cli.main(["compile"]) == "done"

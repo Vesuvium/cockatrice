@@ -11,4 +11,11 @@ defmodule Cockatrice.Cli do
       true -> IO.puts("Unknown command")
     end
   end
+
+  def help() do
+    IO.puts(~S(
+cockatrice compile     generates html files
+cockatrice version     print the version
+cockatrice help        print this text))
+  end
 end
