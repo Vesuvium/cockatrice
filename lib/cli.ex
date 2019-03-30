@@ -19,8 +19,8 @@ defmodule Cockatrice.Cli do
 
   def help() do
     IO.puts(~S(
-cockatrice compile     generates html files
-cockatrice version     print the version
-cockatrice help        print this text))
+compile     generates html files
+version     print the version
+help        print this text))
   end
 end

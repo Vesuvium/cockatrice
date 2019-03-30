@@ -35,9 +35,9 @@ defmodule CockatriceTest.Cli do
     dummy IO, ["puts"] do
       assert Cli.help() ==
                ~S(
-cockatrice compile     generates html files
-cockatrice version     print the version
-cockatrice help        print this text)
+compile     generates html files
+version     print the version
+help        print this text)
     end
   end
 
