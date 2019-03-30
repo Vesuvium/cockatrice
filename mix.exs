@@ -30,6 +30,7 @@ defmodule Medusa.MixProject do
       {:credo, "~> 0.9.1", only: [:dev, :test], runtime: false},
       {:earmark, "~> 1.3.1"},
       {:dummy, "~> 1.1.0"},
+      {:ex_doc, ">= 0.0.0", only: :dev},
       {:expug, "~> 0.9"},
       {:phoenix_live_reload, "~> 1.2"},
       {:plug, "~> 1.7"},
