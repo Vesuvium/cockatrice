@@ -10,7 +10,7 @@ defmodule Cockatrice.Compiler do
     Enum.each(files, fn file ->
       file
       |> Page.new()
-      |> Page.write(dist_folder)
+      |> Page.write(dist_folder, file)
     end)
   end
 end
