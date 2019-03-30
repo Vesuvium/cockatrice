@@ -28,8 +28,22 @@ defmodule CockatriceTest.Page do
     assert Page.target("content/blog/page.md", "dist") == "dist/blog/page.md"
   end
 
+  test "preparing a simple path" do
+    dummy File, ["mkdir_p!"] do
+      assert Page.prepare_path("dist/page.md") == "dist/page.md"
+      assert called(File.mkdir_p!("dist"))
+    end
+  end
+
+  test "preparing a nested path" do
+    dummy File, ["mkdir_p!"] do
+      Page.prepare_path("dist/nested/page.md")
+      assert called(File.mkdir_p!("dist/nested"))
+    end
+  end
+
   test "the write function" do
-    dummy File, ["write/2"] do
+    dummy File, ["write/2", "mkdir_p!"] do
       dummy Page, [{"target", fn _a, _b -> "target" end}] do
         Page.write("content", "dist", "page.md")
         assert called(Cockatrice.Page.target("page.md", "dist"))
