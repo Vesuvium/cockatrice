@@ -1,10 +1,10 @@
 defmodule Cockatrice.Page do
-  @templating_engine Cockatrice.Adapters.Pug
-  alias Cockatrice.Content
-
   @moduledoc """
   Creates and writes pages
   """
+
+  @templating_engine Cockatrice.Adapters.Pug
+  alias Cockatrice.Content
 
   def new(file) do
     templates_folder = Confex.get_env(:cockatrice, :templates)
