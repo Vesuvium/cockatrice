@@ -21,10 +21,6 @@ defmodule Cockatrice.Page do
     |> engine.compile("#{templates_folder}/#{content[:layout]}")
   end
 
-  def write(page, dist_folder) do
-    File.write("#{dist_folder}/index.html", page)
-  end
-
   @doc """
   Builds the target path using the file path and the dist folder
   """
