@@ -7,6 +7,7 @@ defmodule Cockatrice.MixProject do
       version: "0.1.0",
       elixir: "~> 1.8",
       start_permanent: Mix.env() == :prod,
+      description: description(),
       deps: deps(),
       escript: escript()
     ]
@@ -34,5 +35,9 @@ defmodule Cockatrice.MixProject do
       {:plug_cowboy, "~> 2.0"},
       {:yaml_elixir, "~> 2.1.0"}
     ]
+  end
+
+  defp description do
+    "Static website generator with support for Pug."
   end
 end
