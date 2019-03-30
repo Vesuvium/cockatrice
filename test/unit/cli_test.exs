@@ -4,6 +4,7 @@ defmodule CockatriceTest.Cli do
 
   alias Cockatrice.Cli
   alias Cockatrice.Compiler
+  alias Cockatrice.Server
 
   test "running the cli without commands" do
     dummy IO, ["puts"] do
@@ -36,6 +37,7 @@ defmodule CockatriceTest.Cli do
       assert Cli.help() ==
                ~S(
 compile     generates html files
+server      runs the development server
 version     print the version
 help        print this text)
     end
@@ -44,6 +46,20 @@ help        print this text)
   test "the compile command" do
     dummy Compiler, [{"compile", fn -> "done" end}] do
       assert Cli.main(["compile"]) == "done"
+    end
+  end
+
+  test "the server command" do
+    dummy Cli, [{"server", fn -> nil end}] do
+      Cli.main(["server"])
+      assert called(Cli.server())
+    end
+  end
+
+  test "the server function" do
+    dummy Server, ["start/2"] do
+      Cli.server()
+      assert called(Server.start(1, 2))
     end
   end
 end
