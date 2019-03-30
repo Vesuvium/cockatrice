@@ -29,8 +29,10 @@ defmodule Cockatrice.Page do
       file_path
       |> String.split("/", parts: 2)
       |> Enum.at(1)
+      |> String.split(".")
+      |> Enum.at(0)
 
-    "#{dist_path}/#{partial}"
+    "#{dist_path}/#{partial}.html"
   end
 
   @doc """

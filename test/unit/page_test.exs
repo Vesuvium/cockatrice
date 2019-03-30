@@ -21,16 +21,16 @@ defmodule CockatriceTest.Page do
   end
 
   test "the target function" do
-    assert Page.target("content/page.md", "dist") == "dist/page.md"
+    assert Page.target("content/page.md", "dist") == "dist/page.html"
   end
 
   test "the target function with a nested path" do
-    assert Page.target("content/blog/page.md", "dist") == "dist/blog/page.md"
+    assert Page.target("content/blog/page.md", "dist") == "dist/blog/page.html"
   end
 
   test "preparing a simple path" do
     dummy File, ["mkdir_p!"] do
-      assert Page.prepare_path("dist/page.md") == "dist/page.md"
+      assert Page.prepare_path("dist/page.html") == "dist/page.html"
       assert called(File.mkdir_p!("dist"))
     end
   end
