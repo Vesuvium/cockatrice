@@ -1,5 +1,5 @@
 defmodule Cockatrice.FindFiles do
-  @doc """
+  @moduledoc """
   File finding utilities
   """
 
