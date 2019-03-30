@@ -6,6 +6,10 @@ defmodule Cockatrice.Page do
   @templating_engine Cockatrice.Adapters.Pug
   alias Cockatrice.Content
 
+  @doc """
+  Creates a new page by reading the given file and compiling it with the
+  templating engine.
+  """
   def new(file) do
     templates_folder = Confex.get_env(:cockatrice, :templates)
     config = Application.get_env(:cockatrice, __MODULE__, [])
@@ -21,6 +25,9 @@ defmodule Cockatrice.Page do
     File.write("#{dist_folder}/index.html", page)
   end
 
+  @doc """
+  Builds the target path using the file path and the dist folder
+  """
   def target(file_path, dist_path) do
     partial =
       file_path
@@ -43,6 +50,9 @@ defmodule Cockatrice.Page do
     target
   end
 
+  @doc """
+  Writes content for a file in the given dist.
+  """
   def write(content, dist_path, file_path) do
     file_path
     |> Cockatrice.Page.target(dist_path)
