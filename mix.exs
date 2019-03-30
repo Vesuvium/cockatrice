@@ -23,7 +23,7 @@ defmodule Cockatrice.MixProject do
       {:confex, "~> 3.4.0"},
       {:credo, "~> 0.9.1", only: [:dev, :test], runtime: false},
       {:earmark, "~> 1.3.1"},
-      {:dummy, "~> 1.0.0"},
+      {:dummy, "~> 1.1.0"},
       {:expug, "~> 0.9"},
       {:phoenix_live_reload, "~> 1.2"},
       {:plug, "~> 1.7"},
