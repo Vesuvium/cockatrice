@@ -1,20 +1,32 @@
 # Medusa
 
-**TODO: Add description**
+Elixir static site generator that supports Pug.
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `cockatrice` to your list of dependencies in `mix.exs`:
-
-```elixir
-def deps do
-  [
-    {:medusa, "~> 0.1.0"}
-  ]
-end
+```
+git clone https://github.com/Vesuvium/medusa
+cd medusa
+mix deps.get
+mix escript.install
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/cockatrice](https://hexdocs.pm/cockatrice).
+## Usage
+
+Start with:
+
+```
+medusa new mysite
+```
+
+A compile command is available:
+
+```
+medusa compile
+```
+
+A dev server is provided:
+
+```
+medusa server
+```
