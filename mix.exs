@@ -7,7 +7,8 @@ defmodule Cockatrice.MixProject do
       version: "0.1.0",
       elixir: "~> 1.8",
       start_permanent: Mix.env() == :prod,
-      deps: deps()
+      deps: deps(),
+      escript: escript()
     ]
   end
 
@@ -16,6 +17,10 @@ defmodule Cockatrice.MixProject do
       mod: {Cockatrice.Server, []},
       extra_applications: [:logger]
     ]
+  end
+
+  def escript do
+    [main_module: Cockatrice.Cli]
   end
 
   defp deps do
