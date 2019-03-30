@@ -6,10 +6,15 @@ defmodule Cockatrice.Cli do
 
     cond do
       command == "compile" -> Compiler.compile()
-      command == "version" -> IO.puts("Cockatrice version #{Application.spec(:cockatrice, :vsn)}")
+      command == "version" -> Cockatrice.Cli.version()
+      command == "help" -> Cockatrice.Cli.help()
       command == nil -> IO.puts("No command provided")
       true -> IO.puts("Unknown command")
     end
+  end
+
+  def version() do
+    IO.puts("Cockatrice version #{Application.spec(:cockatrice, :vsn)}")
   end
 
   def help() do

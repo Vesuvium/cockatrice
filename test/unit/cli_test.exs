@@ -18,9 +18,16 @@ defmodule CockatriceTest.Cli do
   end
 
   test "the version command" do
+    dummy Cli, [{"version", fn -> nil end}] do
+      Cli.main(["version"])
+      assert called(Cli.version())
+    end
+  end
+
+  test "the version function" do
     dummy IO, ["puts"] do
       version = Application.spec(:cockatrice, :vsn)
-      assert Cli.main(["version"]) == "Cockatrice version #{version}"
+      assert Cli.version() == "Cockatrice version #{version}"
     end
   end
 
