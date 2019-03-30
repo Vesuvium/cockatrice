@@ -1,4 +1,4 @@
-defmodule Mix.Tasks.Cck.Server do
+defmodule Mix.Tasks.Mds.Server do
   def run(args) do
     Mix.Tasks.Run.run(run_args() ++ args)
   end

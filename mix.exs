@@ -1,13 +1,14 @@
-defmodule Cockatrice.MixProject do
+defmodule Medusa.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :cockatrice,
+      app: :medusa,
       version: "0.1.0",
       elixir: "~> 1.8",
       start_permanent: Mix.env() == :prod,
       description: description(),
+      package: package(),
       deps: deps(),
       escript: escript()
     ]
@@ -20,7 +21,7 @@ defmodule Cockatrice.MixProject do
   end
 
   def escript do
-    [main_module: Cockatrice.Cli]
+    [main_module: Medusa.Cli]
   end
 
   defp deps do
@@ -39,5 +40,15 @@ defmodule Cockatrice.MixProject do
 
   defp description do
     "Static website generator with support for Pug."
+  end
+
+  defp package do
+    [
+      name: :medusa,
+      files: ~w(mix.exs lib .formatter.exs README.md LICENSE),
+      maintainers: ["Jacopo Cascioli"],
+      licenses: ["MPL 2.0"],
+      links: %{"GitHub" => "https://github.com/Vesuvium/medusa"}
+    ]
   end
 end

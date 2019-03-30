@@ -1,6 +1,6 @@
-defmodule Cockatrice do
+defmodule Medusa do
   @moduledoc """
-  Documentation for Cockatrice.
+  Documentation for Medusa.
   """
 
   @doc """
@@ -8,7 +8,7 @@ defmodule Cockatrice do
 
   ## Examples
 
-      iex> Cockatrice.hello()
+      iex> Medusa.hello()
       :world
 
   """

@@ -1,9 +1,9 @@
-defmodule CockatriceTest.Frontmatter do
+defmodule MedusaTest.Frontmatter do
   use ExUnit.Case
   import Dummy
 
-  alias Cockatrice.Frontmatter
-  alias Cockatrice.Yaml
+  alias Medusa.Frontmatter
+  alias Medusa.Yaml
 
   test "parsing the frontmatter" do
     dummy Yaml, [{"read", %{"key" => "value"}}] do

@@ -1,7 +1,7 @@
-defmodule CockatriceTest.Yaml do
+defmodule MedusaTest.Yaml do
   use ExUnit.Case
   import Dummy
-  alias Cockatrice.Yaml
+  alias Medusa.Yaml
 
   test "reading yaml files successfully" do
     dummy YamlElixir, [{"read_from_string", {:ok, string}}] do

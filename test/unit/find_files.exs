@@ -1,7 +1,7 @@
-defmodule CockatriceTest.FindFiles do
+defmodule MedusaTest.FindFiles do
   use ExUnit.Case
   import Dummy
-  alias Cockatrice.FindFiles
+  alias Medusa.FindFiles
 
   test "reading a path" do
     ls = fn path ->

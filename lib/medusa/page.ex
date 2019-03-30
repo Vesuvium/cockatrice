@@ -1,18 +1,18 @@
-defmodule Cockatrice.Page do
+defmodule Medusa.Page do
   @moduledoc """
   Creates and writes pages
   """
 
-  @templating_engine Cockatrice.Adapters.Pug
-  alias Cockatrice.Content
+  @templating_engine Medusa.Adapters.Pug
+  alias Medusa.Content
 
   @doc """
   Creates a new page by reading the given file and compiling it with the
   templating engine.
   """
   def new(file) do
-    templates_folder = Confex.get_env(:cockatrice, :templates)
-    config = Application.get_env(:cockatrice, __MODULE__, [])
+    templates_folder = Confex.get_env(:medusa, :templates)
+    config = Application.get_env(:medusa, __MODULE__, [])
     engine = config[:templating_engine] || @templating_engine
 
     content = Content.read(file)
@@ -53,8 +53,8 @@ defmodule Cockatrice.Page do
   """
   def write(content, dist_path, file_path) do
     file_path
-    |> Cockatrice.Page.target(dist_path)
-    |> Cockatrice.Page.prepare_path()
+    |> Medusa.Page.target(dist_path)
+    |> Medusa.Page.prepare_path()
     |> File.write(content)
   end
 end

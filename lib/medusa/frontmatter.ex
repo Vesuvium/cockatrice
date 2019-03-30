@@ -1,8 +1,8 @@
-defmodule Cockatrice.Frontmatter do
+defmodule Medusa.Frontmatter do
   @moduledoc """
   Parses the frontmatter
   """
-  alias Cockatrice.Yaml
+  alias Medusa.Yaml
 
   def parse(string) do
     Enum.reduce(Yaml.read(string), %{}, fn {key, value}, acc ->

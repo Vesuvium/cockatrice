@@ -1,5 +1,5 @@
-defmodule Cockatrice.Content do
-  alias Cockatrice.Frontmatter
+defmodule Medusa.Content do
+  alias Medusa.Frontmatter
 
   defp merge([front, markdown]) do
     Frontmatter.parse(front) |> Map.put("content", Earmark.as_html!(markdown))

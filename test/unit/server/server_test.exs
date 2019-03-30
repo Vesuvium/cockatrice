@@ -1,13 +1,13 @@
-defmodule CockatriceTest.Server do
+defmodule MedusaTest.Server do
   use ExUnit.Case
   import Dummy
 
-  alias Cockatrice.Server
+  alias Medusa.Server
 
   test "the children function" do
     dummy Plug.Cowboy, ["child_spec"] do
       result = [
-        [scheme: :http, plug: Cockatrice.Server.Router, options: [port: 4000]]
+        [scheme: :http, plug: Medusa.Server.Router, options: [port: 4000]]
       ]
 
       assert Server.children() == result

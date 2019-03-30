@@ -1,4 +1,4 @@
 use Mix.Config
 
-config :cockatrice,
+config :medusa,
   dist: "testdist"

@@ -1,4 +1,4 @@
-defmodule Cockatrice.FindFiles do
+defmodule Medusa.FindFiles do
   @moduledoc """
   File finding utilities
   """

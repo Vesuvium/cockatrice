@@ -1,7 +1,7 @@
-defmodule CockatriceTest.Adapters.Pug do
+defmodule MedusaTest.Adapters.Pug do
   use ExUnit.Case
   import Dummy
-  alias Cockatrice.Adapters.Pug
+  alias Medusa.Adapters.Pug
 
   test "the raw function" do
     assert Pug.raw("string") == "string"
@@ -13,7 +13,7 @@ defmodule CockatriceTest.Adapters.Pug do
         dummy EEx, [{"eval_string", fn a, _b -> a end}] do
           assert Pug.compile("data", "path") == "path"
           assert called(File.read!("path"))
-          assert called(Expug.to_eex!("path", raw_helper: "Cockatrice.Pug.raw"))
+          assert called(Expug.to_eex!("path", raw_helper: "Medusa.Pug.raw"))
           assert called(EEx.eval_string("path", assigns: [page: "data"]))
         end
       end

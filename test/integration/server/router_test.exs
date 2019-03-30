@@ -1,13 +1,13 @@
-defmodule CockatriceTest.Server.Router do
+defmodule MedusaTest.Server.Router do
   use ExUnit.Case, async: true
   use Plug.Test
 
-  alias Cockatrice.Server.Router
+  alias Medusa.Server.Router
 
   @opts Router.init([])
 
   setup_all do
-    dist = Application.get_env(:cockatrice, :dist)
+    dist = Application.get_env(:medusa, :dist)
     File.mkdir_p("#{dist}/folder")
     File.mkdir_p("#{dist}/css")
     File.write("#{dist}/index.html", "index")

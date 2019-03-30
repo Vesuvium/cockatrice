@@ -1,16 +1,16 @@
-defmodule Cockatrice.Server.Router do
+defmodule Medusa.Server.Router do
   use Plug.Router
 
   plug(:match)
   plug(:dispatch)
 
   get "/" do
-    dist_folder = Confex.get_env(:cockatrice, :dist)
+    dist_folder = Confex.get_env(:medusa, :dist)
     send_file(conn, 200, "#{dist_folder}/index.html")
   end
 
   get "/*glob" do
-    dist_folder = Confex.get_env(:cockatrice, :dist)
+    dist_folder = Confex.get_env(:medusa, :dist)
     filename = List.last(glob)
     fullpath = Enum.join(glob, "/")
 

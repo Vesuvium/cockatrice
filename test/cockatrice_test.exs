@@ -1,4 +1,4 @@
-defmodule CockatriceTest do
+defmodule MedusaTest do
   use ExUnit.Case
-  doctest Cockatrice
+  doctest Medusa
 end

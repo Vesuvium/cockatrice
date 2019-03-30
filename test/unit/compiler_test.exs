@@ -1,9 +1,9 @@
-defmodule CockatriceTest.Compiler do
+defmodule MedusaTest.Compiler do
   use ExUnit.Case
   import Dummy
-  alias Cockatrice.Compiler
-  alias Cockatrice.FindFiles
-  alias Cockatrice.Page
+  alias Medusa.Compiler
+  alias Medusa.FindFiles
+  alias Medusa.Page
 
   test "the Compiler.compile function" do
     dummy FindFiles, [{"search", fn _a, _b -> ["page.md"] end}] do

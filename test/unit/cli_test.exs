@@ -1,10 +1,10 @@
-defmodule CockatriceTest.Cli do
+defmodule MedusaTest.Cli do
   use ExUnit.Case
   import Dummy
 
-  alias Cockatrice.Cli
-  alias Cockatrice.Compiler
-  alias Cockatrice.Server
+  alias Medusa.Cli
+  alias Medusa.Compiler
+  alias Medusa.Server
 
   test "running the cli without commands" do
     dummy IO, ["puts"] do
@@ -27,8 +27,8 @@ defmodule CockatriceTest.Cli do
 
   test "the version function" do
     dummy IO, ["puts"] do
-      version = Application.spec(:cockatrice, :vsn)
-      assert Cli.version() == "Cockatrice version #{version}"
+      version = Application.spec(:medusa, :vsn)
+      assert Cli.version() == "Medusa version #{version}"
     end
   end
 

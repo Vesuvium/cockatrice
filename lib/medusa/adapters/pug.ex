@@ -1,5 +1,5 @@
-defmodule Cockatrice.Adapters.Pug do
-  @behaviour Cockatrice.TemplateAdapter
+defmodule Medusa.Adapters.Pug do
+  @behaviour Medusa.TemplateAdapter
   @moduledoc """
   Pug adapter
   """
@@ -11,7 +11,7 @@ defmodule Cockatrice.Adapters.Pug do
   def compile(data, path) do
     path
     |> File.read!()
-    |> Expug.to_eex!(raw_helper: "Cockatrice.Pug.raw")
+    |> Expug.to_eex!(raw_helper: "Medusa.Pug.raw")
     |> EEx.eval_string(assigns: [page: data])
   end
 end

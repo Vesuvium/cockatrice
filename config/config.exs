@@ -1,6 +1,6 @@
 use Mix.Config
 
-config :cockatrice,
+config :medusa,
   dist: {:system, "COCKATRICE_DIST_FOLDER", "dist"},
   content: {:system, "COCKATRICE_CONTENT_FOLDER", "content"},
   templates: {:system, "COCKATRICE_TEMPLATES_FOLDER", "templates"},

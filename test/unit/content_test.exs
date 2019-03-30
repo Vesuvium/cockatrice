@@ -1,8 +1,8 @@
-defmodule CockatriceTest.Content do
+defmodule MedusaTest.Content do
   use ExUnit.Case
   import Dummy
-  alias Cockatrice.Content
-  alias Cockatrice.Frontmatter
+  alias Medusa.Content
+  alias Medusa.Frontmatter
 
   test "extracting frontmatter and markdown from a string" do
     dummy String, [{"split", fn _a, _b, _c -> ["front", "markdown"] end}] do

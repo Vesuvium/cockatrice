@@ -1,4 +1,4 @@
-defmodule Cockatrice.Yaml do
+defmodule Medusa.Yaml do
   @doc """
   Wrapper for YamlElixir which exposes a simpler interface and handles errors.
   """

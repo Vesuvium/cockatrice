@@ -1,9 +1,9 @@
-defmodule CockatriceTest.Page do
+defmodule MedusaTest.Page do
   use ExUnit.Case
   import Dummy
-  alias Cockatrice.Page
-  alias Cockatrice.Content
-  alias Cockatrice.Adapters.Pug
+  alias Medusa.Page
+  alias Medusa.Content
+  alias Medusa.Adapters.Pug
 
   test "the new function" do
     content = %{layout: "page.pug"}
@@ -12,7 +12,7 @@ defmodule CockatriceTest.Page do
       dummy Content, [{"read", content}] do
         dummy Pug, ["compile/2"] do
           Page.new("file")
-          assert called(Confex.get_env(:cockatrice, :templates))
+          assert called(Confex.get_env(:medusa, :templates))
           assert called(Content.read("file"))
           assert called(Pug.compile(content, "templates/page.pug"))
         end
@@ -46,7 +46,7 @@ defmodule CockatriceTest.Page do
     dummy File, ["write/2", "mkdir_p!"] do
       dummy Page, [{"target", fn _a, _b -> "target" end}] do
         Page.write("content", "dist", "page.md")
-        assert called(Cockatrice.Page.target("page.md", "dist"))
+        assert called(Medusa.Page.target("page.md", "dist"))
         assert called(File.write("target", "content"))
       end
     end
