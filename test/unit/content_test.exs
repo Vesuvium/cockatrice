@@ -16,7 +16,7 @@ defmodule CockatriceTest.Content do
       dummy String, [{"split", fn _a, _b, _c -> ["front", "markdown"] end}] do
         dummy Earmark, ["as_html!"] do
           dummy Frontmatter, [
-            {"parse", fn _a -> %{"key" => "value"} end},
+            {"parse", %{"key" => "value"}},
             {"defaults", fn _a, _b -> "defaults" end}
           ] do
             result = Content.read("path")

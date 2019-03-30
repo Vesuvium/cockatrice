@@ -6,7 +6,7 @@ defmodule CockatriceTest.Frontmatter do
   alias Cockatrice.Yaml
 
   test "parsing the frontmatter" do
-    dummy Yaml, [{"read", fn _a -> %{"key" => "value"} end}] do
+    dummy Yaml, [{"read", %{"key" => "value"}}] do
       assert Frontmatter.parse("string") == %{"key" => "value"}
       assert called(Yaml.read("string"))
     end

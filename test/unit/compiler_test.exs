@@ -7,7 +7,7 @@ defmodule CockatriceTest.Compiler do
 
   test "the Compiler.compile function" do
     dummy FindFiles, [{"search", fn _a, _b -> ["text"] end}] do
-      dummy Page, ["new", {"write", fn _a, _b -> nil end}] do
+      dummy Page, ["new", "write/2"] do
         Compiler.compile()
         assert called(FindFiles.search("content", ".md"))
         assert called(Page.new("text"))

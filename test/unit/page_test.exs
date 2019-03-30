@@ -9,8 +9,8 @@ defmodule CockatriceTest.Page do
     content = %{layout: "page.pug"}
 
     dummy Confex, [{"get_env", fn _a, _b -> "templates" end}] do
-      dummy Content, [{"read", fn _a -> content end}] do
-        dummy Pug, [{"compile", fn _a, _b -> nil end}] do
+      dummy Content, [{"read", content}] do
+        dummy Pug, ["compile/2"] do
           Page.new("file")
           assert called(Confex.get_env(:cockatrice, :templates))
           assert called(Content.read("file"))
@@ -21,7 +21,7 @@ defmodule CockatriceTest.Page do
   end
 
   test "the write function" do
-    dummy File, [{"write", fn _a, _b -> nil end}] do
+    dummy File, ["write/2"] do
       Page.write("page", "dist")
       assert called(File.write("dist/index.html", "page"))
     end

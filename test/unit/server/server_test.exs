@@ -15,7 +15,7 @@ defmodule CockatriceTest.Server do
   end
 
   test "the start function" do
-    dummy Supervisor, [{"start_link", fn x, y -> [x, y] end}] do
+    dummy Supervisor, ["start_link/2"] do
       result = Supervisor.start_link(Server.children(), strategy: :one_for_one)
       assert Server.start("", "") == result
     end
