@@ -20,6 +20,14 @@ defmodule CockatriceTest.Page do
     end
   end
 
+  test "the target function" do
+    assert Page.target("content/page.md", "dist") == "dist/page.md"
+  end
+
+  test "the target function with a nested path" do
+    assert Page.target("content/blog/page.md", "dist") == "dist/blog/page.md"
+  end
+
   test "the write function" do
     dummy File, ["write/2"] do
       Page.write("page", "dist")

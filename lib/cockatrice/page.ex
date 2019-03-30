@@ -20,4 +20,13 @@ defmodule Cockatrice.Page do
   def write(page, dist_folder) do
     File.write("#{dist_folder}/index.html", page)
   end
+
+  def target(file_path, dist_path) do
+    partial =
+      file_path
+      |> String.split("/", parts: 2)
+      |> Enum.at(1)
+
+    "#{dist_path}/#{partial}"
+  end
 end
