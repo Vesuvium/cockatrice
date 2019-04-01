@@ -1,9 +1,11 @@
 defmodule MedusaTest.Page do
   use ExUnit.Case
   import Dummy
-  alias Medusa.Page
-  alias Medusa.Content
+
   alias Medusa.Adapters.Pug
+  alias Medusa.Content
+  alias Medusa.Files
+  alias Medusa.Page
 
   test "the new function" do
     content = %{layout: "page.pug"}
@@ -28,26 +30,12 @@ defmodule MedusaTest.Page do
     assert Page.target("content/blog/page.md", "dist") == "dist/blog/page.html"
   end
 
-  test "preparing a simple path" do
-    dummy File, ["mkdir_p!"] do
-      assert Page.prepare_path("dist/page.html") == "dist/page.html"
-      assert called(File.mkdir_p!("dist"))
-    end
-  end
-
-  test "preparing a nested path" do
-    dummy File, ["mkdir_p!"] do
-      Page.prepare_path("dist/nested/page.md")
-      assert called(File.mkdir_p!("dist/nested"))
-    end
-  end
-
   test "the write function" do
-    dummy File, ["write/2", "mkdir_p!"] do
+    dummy Files, ["write/2"] do
       dummy Page, [{"target", fn _a, _b -> "target" end}] do
         Page.write("content", "dist", "page.md")
         assert called(Medusa.Page.target("page.md", "dist"))
-        assert called(File.write("target", "content"))
+        assert called(Files.write("target", "content"))
       end
     end
   end
