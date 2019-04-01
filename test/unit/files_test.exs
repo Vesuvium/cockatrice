@@ -22,4 +22,12 @@ defmodule MedusaTest.Files do
       assert Files.search("dir", ".md") == []
     end
   end
+
+  test "writing safely to a path" do
+    dummy File, [{"mkdir_p!", "write/2"}] do
+      Files.write("folder/sub/file.ex", "content")
+      assert called(File.mkdir_p!("folder/sub"))
+      assert called(File.write("folder/sub/file.ex", "content"))
+    end
+  end
 end

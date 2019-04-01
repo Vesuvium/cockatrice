@@ -22,4 +22,14 @@ defmodule Medusa.Files do
       []
     end
   end
+
+  def write(path, content) do
+    shards = String.split(path, "/")
+
+    Enum.take(shards, Enum.count(shards) - 1)
+    |> Enum.join("/")
+    |> File.mkdir_p!()
+
+    File.write(path, content)
+  end
 end
