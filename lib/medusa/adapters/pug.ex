@@ -11,7 +11,7 @@ defmodule Medusa.Adapters.Pug do
   def compile(data, path) do
     path
     |> File.read!()
-    |> Expug.to_eex!(raw_helper: "Medusa.Pug.raw")
+    |> Expug.to_eex!(raw_helper: "Medusa.Adapters.Pug.raw")
     |> EEx.eval_string(assigns: [page: data])
   end
 end
