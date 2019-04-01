@@ -1,5 +1,6 @@
 defmodule Medusa.Cli do
   alias Medusa.Compiler
+  alias Medusa.Project
   alias Medusa.Server
 
   def main(args \\ []) do
@@ -8,6 +9,7 @@ defmodule Medusa.Cli do
     cond do
       command == "compile" -> Compiler.compile()
       command == "server" -> Medusa.Cli.server()
+      command == "new" -> Project.new(Enum.at(args, 1))
       command == "version" -> Medusa.Cli.version()
       command == "help" -> Medusa.Cli.help()
       command == nil -> IO.puts("No command provided")

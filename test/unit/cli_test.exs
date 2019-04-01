@@ -4,6 +4,7 @@ defmodule MedusaTest.Cli do
 
   alias Medusa.Cli
   alias Medusa.Compiler
+  alias Medusa.Project
   alias Medusa.Server
 
   test "running the cli without commands" do
@@ -60,6 +61,13 @@ help        print this text)
     dummy Server, ["start/2"] do
       Cli.server()
       assert called(Server.start(1, 2))
+    end
+  end
+
+  test "the new command" do
+    dummy Project, ["new"] do
+      Cli.main(["new", "app"])
+      assert called(Project.new("app"))
     end
   end
 end
