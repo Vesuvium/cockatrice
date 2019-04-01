@@ -1,6 +1,6 @@
-defmodule Medusa.FindFiles do
+defmodule Medusa.Files do
   @moduledoc """
-  File finding utilities
+  Files utilities
   """
 
   @doc """

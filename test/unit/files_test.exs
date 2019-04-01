@@ -1,7 +1,7 @@
-defmodule MedusaTest.FindFiles do
+defmodule MedusaTest.Files do
   use ExUnit.Case
   import Dummy
-  alias Medusa.FindFiles
+  alias Medusa.Files
 
   test "reading a path" do
     ls = fn path ->
@@ -9,7 +9,7 @@ defmodule MedusaTest.FindFiles do
     end
 
     dummy File, [{"ls", ls}] do
-      assert FindFiles.search("dir", ".md") == ["dir/content.md"]
+      assert Files.search("dir", ".md") == ["dir/content.md"]
     end
   end
 
@@ -19,7 +19,7 @@ defmodule MedusaTest.FindFiles do
     end
 
     dummy File, [{"ls", ls}] do
-      assert FindFiles.search("dir", ".md") == []
+      assert Files.search("dir", ".md") == []
     end
   end
 end
