@@ -8,14 +8,14 @@ defmodule MedusaTest.Cli do
   alias Medusa.Server
 
   test "running the cli without commands" do
-    dummy IO, ["puts"] do
-      assert Cli.main() == "No command provided"
+    dummy Cli, [{"help", fn -> "help" end}] do
+      assert Cli.main() == "help"
     end
   end
 
   test "running an unknown command" do
-    dummy IO, ["puts"] do
-      assert Cli.main(["whatever"]) == "Unknown command"
+    dummy Cli, [{"help", fn -> "help" end}] do
+      assert Cli.main(["whatever"]) == "help"
     end
   end
 

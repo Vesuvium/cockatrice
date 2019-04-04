@@ -12,8 +12,8 @@ defmodule Medusa.Cli do
       command == "new" -> Project.new(Enum.at(args, 1))
       command == "version" -> Medusa.Cli.version()
       command == "help" -> Medusa.Cli.help()
-      command == nil -> IO.puts("No command provided")
-      true -> IO.puts("Unknown command")
+      command == nil -> Medusa.Cli.help()
+      true -> Medusa.Cli.help()
     end
   end
 
