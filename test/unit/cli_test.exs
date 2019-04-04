@@ -37,6 +37,7 @@ defmodule MedusaTest.Cli do
     dummy IO, ["puts"] do
       assert Cli.help() ==
                ~S(
+new NAME    creates a new project
 compile     generates html files
 server      runs the development server
 version     print the version

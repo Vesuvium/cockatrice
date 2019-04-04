@@ -27,6 +27,7 @@ defmodule Medusa.Cli do
 
   def help() do
     IO.puts(~S(
+new NAME    creates a new project
 compile     generates html files
 server      runs the development server
 version     print the version
