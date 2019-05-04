@@ -1,5 +1,7 @@
 # Medusa
 
+![Travis (.com)](https://img.shields.io/travis/com/Vesuvium/medusa.svg?style=for-the-badge)
+
 Elixir static site generator that supports Pug.
 
 ## Installation
