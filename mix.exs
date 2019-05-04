@@ -10,7 +10,13 @@ defmodule Medusa.MixProject do
       description: description(),
       package: package(),
       deps: deps(),
-      escript: escript()
+      escript: escript(),
+      source_url: "https://github.com/Vesuvium/medusa",
+      homepage_url: "https://hexdocs.pm/medusa",
+      docs: [
+        main: "Medusa",
+        extras: ["README.md"]
+      ]
     ]
   end
 
