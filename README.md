@@ -9,7 +9,7 @@ Elixir static site generator that supports Pug.
 ## Installation
 
 ```
-mix escript.install
+mix escript.install hex medusa
 ```
 
 ## Usage
