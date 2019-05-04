@@ -24,3 +24,6 @@ cockatrice-*.tar
 
 mix.lock
 /medusa
+todo.md
+.idea
+.DS_Store
