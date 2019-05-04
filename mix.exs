@@ -38,7 +38,6 @@ defmodule Medusa.MixProject do
       {:dummy, "~> 1.1.0"},
       {:ex_doc, ">= 0.0.0", only: :dev},
       {:expug, "~> 0.9"},
-      {:phoenix_live_reload, "~> 1.2"},
       {:plug, "~> 1.7"},
       {:plug_cowboy, "~> 2.0"},
       {:yaml_elixir, "~> 2.1.0"}
