@@ -16,8 +16,13 @@ defmodule MedusaTest.Server do
 
   test "the start function" do
     dummy Supervisor, ["start_link/2"] do
-      result = Supervisor.start_link(Server.children(), strategy: :one_for_one)
-      assert Server.start("", "") == result
+      dummy Server, [{"loop", fn -> "loop" end}, {"children", fn -> "children" end}] do
+        result = Server.start("", "")
+        options = [strategy: :one_for_one, name: Medusa.Supervisor]
+        assert called(Supervisor.start_link("children", options))
+
+        assert result == "loop"
+      end
     end
   end
 end

@@ -3,6 +3,10 @@ defmodule Medusa.Server do
   alias Medusa.Server.Router
   require Logger
 
+  def loop do
+    loop()
+  end
+
   def children() do
     port = Confex.get_env(:medusa, :port)
     [Cowboy.child_spec(scheme: :http, plug: Router, options: [port: port])]
@@ -10,6 +14,10 @@ defmodule Medusa.Server do
 
   def start(_type, _args) do
     Logger.info("Starting Medusa on http://localhost:4001")
-    Supervisor.start_link(children(), strategy: :one_for_one)
+    options = [strategy: :one_for_one, name: Medusa.Supervisor]
+
+    Supervisor.start_link(Medusa.Server.children(), options)
+
+    Medusa.Server.loop()
   end
 end
