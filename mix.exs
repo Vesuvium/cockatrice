@@ -4,7 +4,7 @@ defmodule Medusa.MixProject do
   def project do
     [
       app: :medusa,
-      version: "0.2.3",
+      version: "0.2.4",
       elixir: "~> 1.8",
       start_permanent: Mix.env() == :prod,
       description: description(),
@@ -22,7 +22,7 @@ defmodule Medusa.MixProject do
 
   def application do
     [
-      extra_applications: [:logger, :eex, :cowboy]
+      applications: [:logger, :eex, :cowboy]
     ]
   end
 
